@@ -19,10 +19,13 @@ Sources
 
 # Tools :wrench:
 
-# License :page_facing_up:
-MIT Licence
+* Git
+* Npm
+* Node.js
+*
 
-https://github.com/Sensinki/Blok-tech/blob/main/Project%20Tech/LICENCE 
+# License :page_facing_up:
+This project is using [MIT Licence](https://github.com/Sensinki/Blok-tech/blob/main/Project%20Tech/LICENCE)
 
 # Sources :globe_with_meridians:
 - Where can I get more help, if I need it?
