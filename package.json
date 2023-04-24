@@ -1,0 +1,20 @@
+{
+  "name": "project-tech",
+  "version": "1.0.0",
+  "description": "this is a project for blok-tech",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js",
+    "precompress": "{{ executes BEFORE the `compress` script }}",
+    "compress": "{{ run command to compress files }}",
+    "postcompress": "{{ executes AFTER `compress` script }}"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "camelcase": "^7.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
