@@ -2,15 +2,16 @@
   "name": "project-tech",
   "version": "1.0.0",
   "description": "this is a project for blok-tech",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "nodemon index.js"
+    "start": "nodemon server.js"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
     "camelcase": "^7.0.1",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "express-handlebars": "^7.0.7"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
