@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "this is a project for blok-tech",
   "main": "server.js",
+  "format": "prettier --write .",
   "scripts": {
     "start": "nodemon server.js"
   },
@@ -19,6 +20,9 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-n": "^15.7.0",
     "eslint-plugin-promise": "^6.1.1",
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "prettier": "2.8.8"
   }
+
+  
 }
