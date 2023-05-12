@@ -14,7 +14,7 @@ dotenv.config()
 
 // Database connection
 const database = (module.exports = () => {
-        mongoose
+    mongoose
         .connect(process.env.DB_URI, {
             dbName: process.env.DB_NAME,
             user: process.env.DB_USERNAME,
@@ -26,21 +26,24 @@ const database = (module.exports = () => {
         .then(() => {
             console.log('database is workingg')
         })
-        .catch(err => console.log(err))
+        .catch((err) => console.log(err))
 })
 
 database()
+
+// hulp gekregen van Ivo om afbeelding zichtbaar te maken
+app.use(express.static('static'))
 
 app.engine('handlebars', engine({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.set('views', './views')
 
 app.get('/', (req, res) => {
-    res.send('home', { title: 'Home' })
+    res.render('home', { title: 'Home' })
 })
 
-app.get('/sign-in', (req, res) => {
-    res.render('sign-in', { title: 'Sign in' })
+app.get('/sign-up', (req, res) => {
+    res.render('sign-up', { title: 'Sign in' })
 })
 
 app.get('/login', (req, res) => {
@@ -51,9 +54,13 @@ app.get('/profile', (req, res) => {
     res.render('profile', { title: 'Profile' })
 })
 
-app.use((req, res, next) => {
-    res.status(404).send(
-        '<h1>Page not found on the server</h1>')
+// not working right now, but later im going to work on it !DO NOT FORGET!
+// app.get('/404', (req, res) => {
+//     res.render('404', { title: '404' })
+// })
+
+app.use((req, res) => {
+    res.status(404).send('<h1>Page not found on the server</h1>')
 })
 
 app.listen(PORT, () => {
