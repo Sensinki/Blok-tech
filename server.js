@@ -1,4 +1,4 @@
-// defineren
+// define
 const express = require('express')
 const mongoose = require('mongoose')
 const { engine } = require('express-handlebars')
@@ -9,8 +9,6 @@ const PORT = process.env.PORT || 3000
 // Hidden file .env
 const dotenv = require('dotenv')
 dotenv.config()
-
-// const username = process.env.DB_USERNAME
 
 // Database connection
 const database = (module.exports = () => {
