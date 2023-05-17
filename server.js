@@ -29,12 +29,12 @@ const database = (module.exports = () => {
 
 database()
 
-// hulp gekregen van Ivo om afbeelding zichtbaar te maken
-app.use(express.static('static'))
-
 app.engine('handlebars', engine({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.set('views', './views')
+
+// hulp gekregen van Ivo om afbeelding zichtbaar te maken
+app.use(express.static('static'))
 
 app.get('/', (req, res) => {
     res.render('home', { title: 'Home' })

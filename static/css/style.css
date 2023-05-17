@@ -1,3 +1,103 @@
-h1 {
-    color: rgb(26, 169, 169);
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    /* backup font*/
+    font-family: 'Annie Use Your Telescope', cursive;
+    font-family: 'Montserrat', sans-serif;
+}
+
+button,
+summary {
+    cursor: pointer;
+}
+
+/* Custom properties */
+:root {
+    /* colors */
+    --body: var(--little-white);
+    --orange: #fb741c;
+    --yellow: #ffbe4e;
+    --dark-green: #124a36;
+    --green: #a5c78d;
+    --little-white: #dae2d9;
+    --white: #ededed;
+    --wit: #ffffff;
+    --black: #2e2e2e;
+}
+/* dark theme */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* colors */
+        --body: #0b3123;
+    }
+}
+
+/* home h1 */
+#welcome {
+    color: var(--little-white);
+    font-family: 'Annie Use Your Telescope', cursive;
+    font-family: 'Sigmar', cursive;
+    font-size: 3em;
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    padding: 1em;
+    margin: 0;
+
+    background: var(--dark-green);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    columns: 1;
+    flex-direction: column;
+    gap: 1em;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--body);
+}
+
+/* logo */
+#logo {
+    padding: 0;
+    margin: 0;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+
+    font-family: 'Annie Use Your Telescope', cursive;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--white);
+}
+
+button {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin: 0;
+
+    background-color: var(--yellow);
+    color: var(--white);
+    border: var(--black);
+
+    font-family: 'Annie Use Your Telescope', cursive;
+    font-family: 'Sigmar', cursive;
+    font-size: 2em;
 }
