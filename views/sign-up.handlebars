@@ -3,40 +3,53 @@
 
 <h1>CREATE ACCOUNT</h1>
 
-<form id="login" method="#" action="#">
-        <label for="nam">Name</label>
-        <input type="text" name="nam" placeholder="Full name">
-        <br><br>
+<form id="signup" method="#" action="#">
+        <div>
+        <label for="nam"> Full Name</label>
+        <input type="text" name="nam" placeholder="Kim Larrington">
+        </div>
+        <br>
 
+        <div>
         <label for="usernam">Glitch Username</label>
-        <input type="text" name="usernam" placeholder="Username">
-        <br><br>
-
+        <input type="text" name="usernam" placeholder="Kim3482">
+        </div>
+        <br>
+        
+        <div>
         <label for="email">Email</label>
-        <input type="email" name="email" placeholder="Email">
-        <br><br>
+        <input type="email" name="email" placeholder="mymail@gmail.com">
+        </div>
+        <br>
 
-        <label for="birthd">Date of birth</label>
-        <input type="date" 
+        {{!-- <label for="birthd">Date of birth</label> --}}
+        {{!-- <input type="date" 
         name="birthd" 
         placeholder="Date of birth" 
         value="2000-01-01"
         min="1800-01-01" 
         max="2024-12-31">
-        <br><br>
+        <br><br> --}}
 
+        <div>
         <label for="pass">Password</label>
-        <input type="Password" name="pass" placeholder="Password">
-        <br><br>
+        <input type="Password" name="pass" placeholder="*****">
+        </div>
+        <br>
 
+        {{!-- <div>
         <label for="pass">Repeat Password</label>
-        <input type="Password" name="re-pass" placeholder="Repeat Password">
-        <br><br>
+        <input type="Password" name="re-pass" placeholder="*****">
+        </div>
+        <br> --}}
 
+        <div class="check">
         <input type="checkbox">
         <span>Remember me</span>
+        </div>
 
-        <input type="submit" name="sign" value="SIGN UP">
+        <input class="submit"
+        type="submit" name="sign" value="SIGN UP">
 </form>
 
 </main>

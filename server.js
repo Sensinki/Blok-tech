@@ -52,13 +52,8 @@ app.get('/profile', (req, res) => {
     res.render('profile', { title: 'Profile' })
 })
 
-// not working right now, but later im going to work on it !DO NOT FORGET!
-// app.get('/404', (req, res) => {
-//     res.render('404', { title: '404' })
-// })
-
-app.use((req, res) => {
-    res.status(404).send('<h1>Page not found on the server</h1>')
+app.use((req, res, next) => {
+  res.status(404).render('404', { title: '404' })
 })
 
 app.listen(PORT, () => {
