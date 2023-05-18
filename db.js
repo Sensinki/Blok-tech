@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb')
 
-const { MONGO_URI } = require('/Users/senanurkorkutan/Desktop/Blok Tech/.')
+const { MONGO_URI } = require('./server')
 
 const client = new MongoClient(MONGO_URI)
 

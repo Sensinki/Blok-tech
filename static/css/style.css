@@ -33,14 +33,18 @@ summary {
     }
 }
 
-/* home h1 */
-#welcome {
-    color: var(--little-white);
-    font-family: 'Annie Use Your Telescope', cursive;
-    font-family: 'Sigmar', cursive;
-    font-size: 3em;
+/* all pages */
+body {
+    width: 100vw;
+    height: 100vh;
+
     padding: 0;
     margin: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--body);
 }
 
 main {
@@ -58,21 +62,76 @@ main {
     gap: 1em;
 }
 
-body {
-    width: 100vw;
-    height: 100vh;
-
+section {
     padding: 0;
     margin: 0;
+    margin-bottom: 2em;
 
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--body);
+    flex-direction: column;
 }
 
 /* logo */
 #logo {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 2em;
+}
+
+/* links */
+p a {
+    appearance: none;
+    font-family: inherit;
+    color: var(--green);
+}
+
+p a:hover {
+    color: var(--yellow);
+    text-decoration: none;
+}
+
+p a:active {
+    color: var(--orange);
+}
+
+/* button */
+button {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin: 0;
+
+    background-color: var(--yellow);
+    box-shadow: .25em .25em var(--orange);
+}
+
+button:active {
+    transform: translateY(.25em);
+    transform: translateX(.25em);
+    box-shadow: .125em .125em var(--orange);
+
+}
+
+button a {
+    background-color: var(--yellow);
+    color: var(--white);
+    border: var(--black);
+    text-decoration: none;
+
+    font-family: 'Annie Use Your Telescope', cursive;
+    font-family: 'Sigmar', cursive;
+    font-size: 2em;
+}
+
+/* h1, h2 .., p */
+#welcome {
+    color: var(--little-white);
+    font-family: 'Annie Use Your Telescope', cursive;
+    font-family: 'Sigmar', cursive;
+    font-size: 2.5em;
     padding: 0;
     margin: 0;
 }
@@ -86,18 +145,11 @@ p {
     color: var(--white);
 }
 
-button {
-    padding-top: 1%;
-    padding-bottom: 1%;
-    padding-left: 10%;
-    padding-right: 10%;
-    margin: 0;
+@media (min-width: 37em) {
+    main {
+        width: 50%;
+        height: 80%;
 
-    background-color: var(--yellow);
-    color: var(--white);
-    border: var(--black);
-
-    font-family: 'Annie Use Your Telescope', cursive;
-    font-family: 'Sigmar', cursive;
-    font-size: 2em;
+        background: var(--dark-green);
+    }
 }
