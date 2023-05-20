@@ -4,26 +4,32 @@
 
 <h1>WELCOME</h1>
 
-<form id="login" method="#" action="#">
+{{#if messages.error}}
+<span>{{messages.error}}</span>
+{{/if}}
+
+<form id="login" method="post" action="/login">
     <div>
-    <label for="usernam">Username</label>
-    <input type="text" name="usernam" placeholder="Username">
+    <label for="email">Email</label>
+    <input type="text" name="email" placeholder="kim34@gmail.com">
     </div>
     <br>
 
     <div>
-    <label for="pass">Password</label>
-    <input type="Password" name="pass" placeholder="Password">
+    <label for="password">Password</label>
+    <input type="password" name="password" placeholder="*****">
     </div>
     <br>
 
-    <div class="check">
+    {{!-- <div class="check">
     <input type="checkbox">
     <span>Remember me</span>
-    </div>
+    </div> --}}
 
-    <input class="submit"
+    <input class="submit" 
     type="submit" name="log" value="LOG IN">
 </form>
+
+ <a href="/sign-up">I don't have an account</a>
 
 </main>

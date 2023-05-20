@@ -8,7 +8,7 @@
 }
 
 button,
-summary {
+a {
     cursor: pointer;
 }
 
@@ -24,6 +24,8 @@ summary {
     --white: #ededed;
     --wit: #ffffff;
     --black: #2e2e2e;
+    --err: #db5858d2;
+    --err-border: #a52c2c;
 }
 /* dark theme */
 @media (prefers-color-scheme: dark) {
@@ -85,6 +87,11 @@ section {
 }
 
 /* links */
+a {
+    color: var(--white);
+    font-family: 'Annie Use Your Telescope', cursive;
+    font-family: 'Montserrat', sans-serif;
+}
 p a {
     appearance: none;
     font-family: inherit;
@@ -131,6 +138,19 @@ button a {
     font-size: 2em;
 }
 
+/* error */
+span {
+    width: 90%;
+    height: 3em;
+
+    padding: .4em;
+    padding-left: 1em;
+
+    background-color: var(--err);
+ 
+    border: .1em solid var(--err-border);
+    border-radius: .5em;
+}
 /* h1, h2 .., p */
 #welcome, h1 {
     color: var(--little-white);
@@ -150,12 +170,16 @@ p {
     font-family: 'Annie Use Your Telescope', cursive;
     font-family: 'Montserrat', sans-serif;
     color: var(--white);
+
+    text-align: center;
 }
 
 /* forms */
 form {
     width: 80%;
     height: 90%;
+    max-width: 20em;
+
 }
 
 form div {
@@ -210,8 +234,61 @@ input {
 
 }
 
+/* list items */
+ul {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1em;
+    row-gap: .5em;
+    justify-content: space-between;
+    
+}
+
+.logout {
+    width: 80%;
+    height: max-content;
+    position: relative;
+}
+
+.logout button {
+    position: absolute;
+    right: -2em;
+    top: -2em;
+    padding: .5em;
+
+    border-radius: .5em;
+
+    background-color: var(--black);
+    color: var(--little-white);
+    box-shadow: .125em .125em var(--err-border);
+    text-decoration: none;
+}
+
+.logout button:hover {
+    position: absolute;
+    right: -2.25em;
+    top: -1.75em;
+
+    color: var(--white);
+    box-shadow: .05em .05em var(--err-border);
+}
+
+.logout a:active {
+    position: absolute;
+    right: -2.5em;
+    top: -1.5em;
+
+    color: var(--green);
+}
+
+
 /* remember me */
-.check {
+/* .check {
     color: var(--white);
 
     display: flex;
@@ -226,7 +303,8 @@ input[type="checkbox"] {
     width: auto;
     margin: 0;
     margin-right: 10px;
-}
+} */
+
 
 /* 404 page */
 #errorstatus {
@@ -295,7 +373,7 @@ input[type="checkbox"] {
 
 @media (min-width: 70em) {
     main {
-        width: 40em;
+        width: 35em;
         height: 90%;
 
         background: var(--dark-green);

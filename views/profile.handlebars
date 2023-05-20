@@ -1,28 +1,36 @@
 <main>
 
 {{> header-hp }}
+<form class="logout" action="/logout?_method=DELETE" method="POST">
+<button type="submit" >log out</button>
+</form>
 
-{{!-- dynamische deel gaat komen --}}
-<h1>Hi</h1>
-
+{{!-- dynamic part --}}
+<ul>
+<li><h1>Hi {{ name }}</h1></li>
+</ul>
 <section>
     <h2>Add the games you play</h2>
     {{!-- corroussel met images --}}
-    <img src="#" alt="Pubg">
-    <img src="#" alt="Minecraft">
-    <img src="#" alt="LOL">
-    <img src="#" alt="Roblox">
-    <img src="#" alt="CSGO">
-    <img src="#" alt="Fortnite">
-    <img src="#" alt="Grand Theft Auto V">
-    <img src="#" alt="Rocket League">
-    <img src="#" alt="Valorant">
+    <ul>
+        <li><img src="#" alt="Pubg"></li>
+        <li><img src="#" alt="Apex"></li>
+        <li><img src="#" alt="Minecraft"></li>
+        <li><img src="#" alt="LOL"></li>
+        <li><img src="#" alt="Roblox"></li>
+        <li><img src="#" alt="CSGO"></li>
+        <li><img src="#" alt="Fortnite"></li>
+        <li><img src="#" alt="Grand Theft Auto V"></li>
+        <li><img src="#" alt="Rocket League"></li>
+        <li><img src="#" alt="Valorant"></li>
+    </ul>
 </section>
 
 <section>
     <h2>Find a gamer to play with</h2>
 
-<button>
-    <a href="/404">FIND GAMER</a>
-</button></section>
+    <button>
+        <a href="/404">FIND GAMER</a>
+    </button>
+</section>
 </main>

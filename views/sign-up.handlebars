@@ -3,22 +3,26 @@
 
 <h1>CREATE ACCOUNT</h1>
 
-<form id="signup" method="#" action="#">
+{{#if messages.error}}
+<span>{{messages.error}}</span>
+{{/if}}
+
+<form id="sign-up" method="post" action="/sign-up">
         <div>
-        <label for="nam"> Full Name</label>
-        <input type="text" name="nam" placeholder="Kim Larrington">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Kim Larrington" required>
         </div>
         <br>
 
         <div>
-        <label for="usernam">Glitch Username</label>
-        <input type="text" name="usernam" placeholder="Kim3482">
+        <label for="username">Glitch Username</label>
+        <input type="text" id="username" name="username" placeholder="Kim3482" required>
         </div>
         <br>
         
         <div>
         <label for="email">Email</label>
-        <input type="email" name="email" placeholder="mymail@gmail.com">
+        <input type="email" id="email" name="email" placeholder="mymail@gmail.com" required>
         </div>
         <br>
 
@@ -32,8 +36,8 @@
         <br><br> --}}
 
         <div>
-        <label for="pass">Password</label>
-        <input type="Password" name="pass" placeholder="*****">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="*****" required>
         </div>
         <br>
 
@@ -43,13 +47,16 @@
         </div>
         <br> --}}
 
-        <div class="check">
+        {{!-- <div class="check">
         <input type="checkbox">
         <span>Remember me</span>
-        </div>
+        </div> --}}
 
         <input class="submit"
         type="submit" name="sign" value="SIGN UP">
+
 </form>
+
+ <a href="/login">I already have an account</a>
 
 </main>
