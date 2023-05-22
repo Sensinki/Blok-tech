@@ -37,16 +37,21 @@ a {
 
 /* all pages */
 body {
-    width: 100vw;
-    height: 100vh;
-
-    padding: 0;
-    margin: 0;
-
+    /* display */
     display: flex;
     justify-content: center;
     align-items: center;
+    
+    /* position */
+    padding: 0;
+    margin: 0;
+
+    /* color */
     background-color: var(--body);
+
+    /* sizes */
+    width: 100vw;
+    height: 100vh;
 }
 
 

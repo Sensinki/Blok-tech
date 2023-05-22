@@ -1,8 +1,14 @@
 const mongoose = require('mongoose')
 
 const userSchema = new mongoose.Schema({
-    name: String,
-    username: String,
+    name: {
+        type: String,
+        required: false
+    },
+    username: {
+        type: String,
+        required: true
+    },
     email: {
         type: String,
         required: true,
@@ -10,8 +16,10 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        minLenght: 5
+        required: true
     }
 })
 
-module.exports = mongoose.model('UserModel', userSchema)
+module.exports = mongoose.model('user', userSchema)
+
+// i have no idea how to store this info to the database

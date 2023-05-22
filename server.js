@@ -17,6 +17,8 @@ const methodOverride = require('method-override')
 
 const PORT = process.env.PORT || 3000
 
+const User = require('./models/user')
+
 initializePassport(
     passport,
     email => users.find(user => user.email === email),
@@ -68,14 +70,28 @@ const database = (module.exports = () => {
 
 database()
 
-// configuring the login ppost functionalty
-app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
+async function run () {
+    try {
+        const user = await User.create({
+            password: 'teyrg',
+            email: 's@s',
+            username: 'hi'
+        })
+        console.log(user)
+    } catch (e) {
+    console.log(e.message)
+    }
+}
+run()
+
+// configuring the login post functionalty
+app.post('/login-check', checkNotAuthenticated, passport.authenticate('local', {
     succesRedirect: '/profile',
     failureRedirect: '/login',
     failureFlash: true
 }))
 
-// configuring the sign-up ppost functionalty
+// configuring the sign-up post functionalty
 app.post('/sign-up', checkNotAuthenticated, async (req, res) => {
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
@@ -92,6 +108,10 @@ app.post('/sign-up', checkNotAuthenticated, async (req, res) => {
         res.redirect('/sign-up')
     }
     console.log(users)
+})
+
+app.post('/profile', checkAuthenticated, (req, res) => {
+    res.render('profile', { title: 'Profile', name: req.user.name })
 })
 
 // Routes
