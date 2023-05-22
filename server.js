@@ -176,7 +176,7 @@ function checkNotAuthenticated (req, res, next) {
 }
 
 // LAATSTE ROUTE ERROR(404) PAGINA
-app.get('/', (req, res) => {
+app.get('/*', (req, res) => {
     res.status(404).render('404', { title: '404' })
 })
 
