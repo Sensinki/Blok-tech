@@ -2,33 +2,47 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
 }
 
-// importing
+// IMPORTING
 const express = require('express')
 const app = express()
-
+// templating engine
 const { engine } = require('express-handlebars')
+// for password
 const bcrypt = require('bcrypt')
+// database
 const mongoose = require('mongoose')
+// authentication
 const passport = require('passport')
 const initializePassport = require('./passport')
 const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
-
-const PORT = process.env.PORT || 3000
-
+// user schema
 const User = require('./models/user')
 
+// PORT
+const PORT = process.env.PORT || 3000
+
+//
+const users = []
+
+// BASIC SETTINGS
+app.engine('handlebars', engine({ defaultLayout: 'main' }))
+app.set('view engine', 'handlebars')
+app.set('views', './views')
+
+//
 initializePassport(
     passport,
     email => users.find(user => user.email === email),
     id => users.find(user => user.id === id)
 )
 
-const users = []
-
+// APP.USE
 app.use(express.urlencoded({ extended: false }))
+// error messages
 app.use(flash())
+// ?
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
@@ -37,21 +51,17 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(methodOverride('_method'))
-
+// ?
 app.use(express.json())
 
-app.engine('handlebars', engine({ defaultLayout: 'main' }))
-app.set('view engine', 'handlebars')
-app.set('views', './views')
-
-// hulp gekregen van Ivo om afbeelding zichtbaar te maken
+// om static zichtbaar te maken (behulp van Ivo)
 app.use(express.static('static'))
 
-// Hidden file .env
+// .ENV FILE
 const dotenv = require('dotenv')
 dotenv.config()
 
-// Database connection
+// DATABASE
 const database = (module.exports = () => {
     mongoose
         .connect(process.env.DB_URI, {
@@ -67,23 +77,28 @@ const database = (module.exports = () => {
         })
         .catch((err) => console.log(err))
 })
-
 database()
 
-async function run () {
-    try {
-        const user = await User.create({
-            password: 'teyrg',
-            email: 's@s',
-            username: 'hi'
-        })
-        console.log(user)
-    } catch (e) {
-    console.log(e.message)
-    }
-}
-run()
+// app.get()
 
+// CREATE USER ??
+// later kijken
+// async function run () {
+//     try {
+//         const user = await User.create({
+//             name: 'etss',
+//             username: 'hi',
+//             email: 's@s',
+//             password: 'teyrg'
+//         })
+//         console.log(user)
+//     } catch (e) {
+//     console.log(e.message)
+//     }
+// }
+// run()
+
+// APP.POST
 // configuring the login post functionalty
 app.post('/login-check', checkNotAuthenticated, passport.authenticate('local', {
     succesRedirect: '/profile',
@@ -114,7 +129,7 @@ app.post('/profile', checkAuthenticated, (req, res) => {
     res.render('profile', { title: 'Profile', name: req.user.name })
 })
 
-// Routes
+// ROUTES
 app.get('/', checkNotAuthenticated, (req, res) => {
     res.render('home', { title: 'Home' })
 })
@@ -131,20 +146,21 @@ app.get('/profile', checkAuthenticated, (req, res) => {
     res.render('profile', { title: 'Profile', name: req.user.name })
 })
 
-app.use((req, res, next) => {
-  res.status(404).render('404', { title: '404' })
+// test
+app.get('/test', async (req, res) => {
+    const doc = await User.findOne()
+    console.log(doc)
 })
 
-// ASK //
-// ask what is the problem about next ???
-// ASK //
-app.delete('/logout', (req, res) => {
+// LOGOUT
+app.post('/logout', (req, res) => {
     req.logout(req.user, err => {
         if (err) return (err)
         res.redirect('/')
     })
 })
 
+// AUTHENTICATED OR NOT
 function checkAuthenticated (req, res, next) {
     if (req.isAuthenticated()) {
         return next()
@@ -159,6 +175,12 @@ function checkNotAuthenticated (req, res, next) {
     next()
 }
 
+// LAATSTE ROUTE ERROR(404) PAGINA
+app.get('/', (req, res) => {
+    res.status(404).render('404', { title: '404' })
+})
+
+// PORT
 app.listen(PORT, () => {
     console.log('App running on port', PORT)
 })

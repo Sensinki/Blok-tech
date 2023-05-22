@@ -1,3 +1,4 @@
+/* EVERYTHING */
 *,
 *::after,
 *::before {
@@ -7,12 +8,13 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+/* cursor */
 button,
 a {
     cursor: pointer;
 }
 
-/* Custom properties */
+/* CUSTOM PROPERITIES */
 :root {
     /* colors */
     --body: var(--little-white);
@@ -26,8 +28,10 @@ a {
     --black: #2e2e2e;
     --err: #db5858d2;
     --err-border: #a52c2c;
+    --err-background: #182c1d;
 }
-/* dark theme */
+
+/* DARK THEME */
 @media (prefers-color-scheme: dark) {
     :root {
         /* colors */
@@ -35,7 +39,7 @@ a {
     }
 }
 
-/* all pages */
+/* ALL PAGES */
 body {
     /* display */
     display: flex;
@@ -56,242 +60,308 @@ body {
 
 
 main {  
-    width: 100%;
-    height: 100%;
-    padding: 1em;
-    margin: 0;
-
-    box-shadow: .25em -.25em var(--little-white);
-
-    background: var(--dark-green);
+    /* display */
     display: flex;
     justify-content: center;
     align-items: center;
     columns: 1;
     flex-direction: column;
     gap: 1em;
+
+    /* position */
+    padding: 1em;
+    margin: 0;
+
+    /* color */
+    box-shadow: .25em -.25em var(--little-white);
+    background: var(--dark-green);
+
+    /* sizes */
+    width: 100%;
+    height: 100%;
 }
 
 section {
-    padding: 0;
-    margin: 0;
-    margin-bottom: 2em;
-
+    /* display */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
 
-/* logo */
-
-#logo {
+    /* position */
     padding: 0;
     margin: 0;
     margin-bottom: 2em;
 }
 
-/* links */
+/* LOGO */
+
+#logo {
+    /* position */
+    padding: 0;
+    margin: 0;
+    margin-bottom: 2em;
+}
+
+/* LINKS */
 a {
+    /* color */
     color: var(--white);
+
+    /* text */
     font-family: 'Annie Use Your Telescope', cursive;
     font-family: 'Montserrat', sans-serif;
 }
 p a {
+    /* text */
     appearance: none;
     font-family: inherit;
-    color: var(--green);
 }
 
 p a:hover {
+    /* color */
     color: var(--yellow);
+
+    /* text */
     text-decoration: none;
 }
 
 p a:active {
+    /* color */
     color: var(--orange);
 }
 
-/* button */
+/* BUTTON */
 button {
+    /* position */
     padding-top: 1%;
     padding-bottom: 1%;
     padding-left: 10%;
     padding-right: 10%;
     margin: 0;
 
+    /* color */
     background-color: var(--yellow);
     box-shadow: .25em .25em var(--orange);
 }
 
 
 button:active {
+    /* position */
     transform: translateY(.25em);
     transform: translateX(.25em);
-    box-shadow: .125em .125em var(--orange);
 
+    /* color */
+    box-shadow: .125em .125em var(--orange);
 }
 
 button a {
+    /* color */
     background-color: var(--yellow);
     color: var(--white);
     border: var(--black);
-    text-decoration: none;
 
+    /* text */
     font-family: 'Annie Use Your Telescope', cursive;
     font-family: 'Sigmar', cursive;
     font-size: 2em;
+    text-decoration: none;
 }
 
 /* error */
 span {
-    width: 90%;
-    height: 3em;
-
+    /* position */
     padding: .4em;
     padding-left: 1em;
 
+    /* color */
     background-color: var(--err);
- 
+
+    /* sizes */
+    width: 90%;
+    height: 3em;
+
+    /* border */
     border: .1em solid var(--err-border);
     border-radius: .5em;
 }
 /* h1, h2 .., p */
 #welcome, h1 {
+    /* position */
+    padding: 0;
+    margin: 0;
+
+    /* color */
     color: var(--little-white);
+
+    /* text */
     font-family: 'Annie Use Your Telescope', cursive;
     font-family: 'Sigmar', cursive;
     font-size: 2.5em;
-    padding: 0;
-    margin: 0;
     inline-size: content;
     text-align: center;
 }
 
 p {
+    /* position */
     padding: 0;
     margin: 0;
 
-    font-family: 'Annie Use Your Telescope', cursive;
-    font-family: 'Montserrat', sans-serif;
+    /* color */
     color: var(--white);
 
-    text-align: center;
+    /* text */
+    font-family: 'Annie Use Your Telescope', cursive;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;  
 }
 
 /* forms */
 form {
+    /* position */
     width: 80%;
     height: 90%;
     max-width: 20em;
-
 }
 
 form div {
-  display: flex;
-  flex-direction: column;
+    /* display */
+    display: flex;
+    flex-direction: column;
 }
+
 label {
-    font-size: .9em;
+    /* color */
     color: var(--white);
+
+    /* text */
+    font-size: .9em;
 }
 
 input {
+    /* position */
     padding: .5em .5em;
     margin: .1em 0 .15em;
 
+    /* color */
+    color: var(--black);
     background-color: transparent;
-    box-sizing: border-box;
     background-color: var(--little-white);
+
+    /* sizes */
+    width: 100%;
+    box-sizing: border-box;
+
+    /* border */
     border: .05em solid var(--black);
     border-radius: .6em;
-    width: 100%;
+
+    /* text */
     font-size: 1em;
-    color: var(--black);
     outline: 0;
 }
 
 .submit {
+    /* position */
     padding-top: 1%;
     padding-bottom: 1%;
     padding-left: 10%;
     padding-right: 10%;
     margin: 0;
 
-    border-radius: 0;
-
+    /* color */
     background-color: var(--yellow);
     box-shadow: .25em .25em var(--orange);
-
     color: var(--white);
-    border: var(--black);
-    text-decoration: none;
 
+    /* border */
+    border-radius: 0;
+    border: var(--black);
+
+    /* text */
+    text-decoration: none;
     font-family: 'Annie Use Your Telescope', cursive;
     font-family: 'Sigmar', cursive;
     font-size: 2em;
 }
 
 .submit:active {
+    /* position */
     transform: translateY(.25em);
     transform: translateX(.25em);
-    box-shadow: .125em .125em var(--orange);
 
+    /* color */
+    box-shadow: .125em .125em var(--orange);
 }
 
 /* list items */
 ul {
-    margin: 0;
-    padding: 0;
-
-    list-style: none;
+    /* display */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 1em;
     row-gap: .5em;
     justify-content: space-between;
-    
+
+    /* position */
+    margin: 0;
+    padding: 0;
+
+    /* text */
+    list-style: none;
 }
 
 .logout {
+    /* position */
+    position: relative;
+
+    /* sizes */
     width: 80%;
     height: max-content;
-    position: relative;
 }
 
 .logout button {
+    /* position */
     position: absolute;
     right: -2em;
     top: -2em;
     padding: .5em;
 
-    border-radius: .5em;
-
+    /* color */
     background-color: var(--black);
     color: var(--little-white);
     box-shadow: .125em .125em var(--err-border);
+
+    /* border */
+    border-radius: .5em;
+
+    /* text */
     text-decoration: none;
 }
 
 .logout button:hover {
+    /* position */
     position: absolute;
     right: -2.25em;
     top: -1.75em;
 
+    /* color */
     color: var(--white);
     box-shadow: .05em .05em var(--err-border);
 }
 
 .logout a:active {
+    /* position */
     position: absolute;
     right: -2.5em;
     top: -1.5em;
 
+    /* color */
     color: var(--green);
 }
 
-
+/* VERWIJDEREN? */
 /* remember me */
 /* .check {
     color: var(--white);
@@ -311,13 +381,15 @@ input[type="checkbox"] {
 } */
 
 
-/* 404 page */
+/* 404 PAGE */
 #errorstatus {
+    /* sizes */
     width: 100vw;
     height: 100vh;
 
+    /* color */
     /* https://heropatterns.com/ */
-    background-color: #182c1d;
+    background-color: var(--err-background);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='58' viewBox='0 0 42 58'%3E%3Cg fill='%233d574b' fill-opacity='0.69'%3E%3Cpath fill-rule='evenodd' d='M12 18h12v18h6v4H18V22h-6v-4zm-6-2v-4H0V0h36v6h6v36h-6v4h6v12H6v-6H0V16h6zM34 2H2v8h24v24h8V2zM6 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM2 50h32v-8H10V18H2v32zm28-6a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4z'/%3E%3C/g%3E%3C/svg%3E");
 }
 
@@ -325,51 +397,72 @@ input[type="checkbox"] {
 #err h2,
 #err p,
 #err h2 a{
+    /* position */
     padding: 0;
     margin: 0;
+
+    /* text */
     font-family: 'VT323', monospace;
 }
 
 #err h1 {
-    font-size: 10vw;
+    /* color */
     color: var(--green);
+
+    /* text */
+    font-size: 10vw;
 }
 
 #err h2 a {
-    font-size: 10vw;
+    /* color */
     color: var(--green);
+
+    /* text */
+    font-size: 10vw;
     text-decoration: none;
 }
 
 #err h2 a:hover {
-    font-size: 11vw;
+    /* color */
     color: var(--little-white);
+
+    /* text */
+    font-size: 11vw;
 }
 
 #err h2 a:active {
-    font-size: 10vw;
+    /* color */
     color: var(--white);
+
+    /* text */
+    font-size: 10vw;
 }
 
 #err p {
-    font-size: 4vw;
+    /* color */
     color: var(--white);
 
+    /* text */
+    font-size: 4vw;
 }
 
 #err img {
+    /* sizes */
     width: 80vw;
 }
 
 @media (min-width: 37em) {
     main {
+        /* color */
+        background: var(--dark-green);
+
+        /* sizes */
         width: 50%;
         height: 90%;
-
-        background: var(--dark-green);
     }
 
     form {
+        /* sizes */
         width: 90%;
         height: 90%;
     }
@@ -378,31 +471,38 @@ input[type="checkbox"] {
 
 @media (min-width: 70em) {
     main {
+        /* color */
+        background: var(--dark-green);
+
+        /* sizes */
         width: 35em;
         height: 90%;
-
-        background: var(--dark-green);
     }
 
     form {
+        /* sizes */
         width: 20em;
         height: 90%;
     }
 
     /* 404 page */
     #err h1 {
-    font-size: 10em;
+        /* text */
+        font-size: 10em;
     }
 
     #err h2 {
+        /* text */
         font-size: 10em;
     }
 
     #err p {
+        /* text */
         font-size: 3em;
     }
 
     #err img {
+        /* sizes */
         width: 50em;
     }
 }
