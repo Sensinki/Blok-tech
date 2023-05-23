@@ -100,7 +100,7 @@ database()
 
 // APP.POST
 // configuring the login post functionalty
-app.post('/login-check', checkNotAuthenticated, passport.authenticate('local', {
+app.post('/login-check', passport.authenticate('local', {
     succesRedirect: '/profile',
     failureRedirect: '/login',
     failureFlash: true
@@ -125,7 +125,7 @@ app.post('/sign-up', checkNotAuthenticated, async (req, res) => {
     console.log(users)
 })
 
-app.post('/profile', checkAuthenticated, (req, res) => {
+app.post('/profile', (req, res) => {
     res.render('profile', { title: 'Profile', name: req.user.name })
 })
 
