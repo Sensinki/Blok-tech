@@ -100,11 +100,19 @@ database()
 
 // APP.POST
 // configuring the login post functionalty
-app.post('/login-check', passport.authenticate('local', {
-    succesRedirect: '/profile',
+// app.post('/login-check', passport.authenticate('local', {
+//     succesRedirect: '/profile',
+//     failureRedirect: '/login',
+//     failureFlash: true
+// }))
+
+// I got help from Ivo via Tech Support
+app.post('/login-check', checkNotAuthenticated, passport.authenticate('local', {
     failureRedirect: '/login',
     failureFlash: true
-}))
+}), function (req, res) {
+    res.redirect('/profile')
+})
 
 // configuring the sign-up post functionalty
 app.post('/sign-up', checkNotAuthenticated, async (req, res) => {

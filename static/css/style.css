@@ -96,7 +96,7 @@ section {
 
 /* LOGO */
 
-#logo {
+.logo {
     /* position */
     padding: 0;
     margin: 0;
@@ -186,7 +186,7 @@ span {
     border-radius: .5em;
 }
 /* h1, h2 .., p */
-#welcome, h1 {
+.welcome, h1 {
     /* position */
     padding: 0;
     margin: 0;
@@ -382,7 +382,7 @@ input[type="checkbox"] {
 
 
 /* 404 PAGE */
-#errorstatus {
+.errorstatus {
     /* sizes */
     width: 100vw;
     height: 100vh;
@@ -393,10 +393,10 @@ input[type="checkbox"] {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='58' viewBox='0 0 42 58'%3E%3Cg fill='%233d574b' fill-opacity='0.69'%3E%3Cpath fill-rule='evenodd' d='M12 18h12v18h6v4H18V22h-6v-4zm-6-2v-4H0V0h36v6h6v36h-6v4h6v12H6v-6H0V16h6zM34 2H2v8h24v24h8V2zM6 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM2 50h32v-8H10V18H2v32zm28-6a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4z'/%3E%3C/g%3E%3C/svg%3E");
 }
 
-#err h1, 
-#err h2,
-#err p,
-#err h2 a{
+.err h1, 
+.err h2,
+.err p,
+.err h2 a{
     /* position */
     padding: 0;
     margin: 0;
@@ -405,7 +405,7 @@ input[type="checkbox"] {
     font-family: 'VT323', monospace;
 }
 
-#err h1 {
+.err h1 {
     /* color */
     color: var(--green);
 
@@ -413,7 +413,7 @@ input[type="checkbox"] {
     font-size: 10vw;
 }
 
-#err h2 a {
+.err h2 a {
     /* color */
     color: var(--green);
 
@@ -422,7 +422,7 @@ input[type="checkbox"] {
     text-decoration: none;
 }
 
-#err h2 a:hover {
+.err h2 a:hover {
     /* color */
     color: var(--little-white);
 
@@ -430,7 +430,7 @@ input[type="checkbox"] {
     font-size: 11vw;
 }
 
-#err h2 a:active {
+.err h2 a:active {
     /* color */
     color: var(--white);
 
@@ -438,7 +438,7 @@ input[type="checkbox"] {
     font-size: 10vw;
 }
 
-#err p {
+.err p {
     /* color */
     color: var(--white);
 
@@ -446,7 +446,7 @@ input[type="checkbox"] {
     font-size: 4vw;
 }
 
-#err img {
+.err img {
     /* sizes */
     width: 80vw;
 }
@@ -486,22 +486,22 @@ input[type="checkbox"] {
     }
 
     /* 404 page */
-    #err h1 {
+    .err h1 {
         /* text */
         font-size: 10em;
     }
 
-    #err h2 {
+    .err h2 {
         /* text */
         font-size: 10em;
     }
 
-    #err p {
+    .err p {
         /* text */
         font-size: 3em;
     }
 
-    #err img {
+    .err img {
         /* sizes */
         width: 50em;
     }
