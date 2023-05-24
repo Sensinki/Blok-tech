@@ -34,8 +34,8 @@ app.set('views', './views')
 //
 initializePassport(
     passport,
-    email => users.find(user => user.email === email),
-    id => users.find(user => user.id === id)
+    (email) => users.find((user) => user.email === email),
+    (id) => users.find((user) => user.id === id)
 )
 
 // APP.USE
@@ -43,11 +43,13 @@ app.use(express.urlencoded({ extended: false }))
 // error messages
 app.use(flash())
 // ?
-app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false
-}))
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: false
+    })
+)
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(methodOverride('_method'))
@@ -100,19 +102,19 @@ database()
 
 // APP.POST
 // configuring the login post functionalty
-// app.post('/login-check', passport.authenticate('local', {
-//     succesRedirect: '/profile',
-//     failureRedirect: '/login',
-//     failureFlash: true
-// }))
 
 // I got help from Ivo via Tech Support
-app.post('/login-check', checkNotAuthenticated, passport.authenticate('local', {
-    failureRedirect: '/login',
-    failureFlash: true
-}), function (req, res) {
-    res.redirect('/profile')
-})
+app.post(
+    '/login-check',
+    checkNotAuthenticated,
+    passport.authenticate('local', {
+        failureRedirect: '/login',
+        failureFlash: true
+    }),
+    function (req, res) {
+        res.redirect('/profile')
+    }
+)
 
 // configuring the sign-up post functionalty
 app.post('/sign-up', checkNotAuthenticated, async (req, res) => {
@@ -162,8 +164,8 @@ app.get('/test', async (req, res) => {
 
 // LOGOUT
 app.post('/logout', (req, res) => {
-    req.logout(req.user, err => {
-        if (err) return (err)
+    req.logout(req.user, (err) => {
+        if (err) return err
         res.redirect('/')
     })
 })
