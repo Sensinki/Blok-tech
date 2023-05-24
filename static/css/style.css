@@ -45,7 +45,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
     /* position */
     padding: 0;
     margin: 0;
@@ -65,8 +65,7 @@ body {
     background-size: cover;
 }
 
-
-main {  
+main {
     /* display */
     display: flex;
     justify-content: center;
@@ -80,7 +79,7 @@ main {
     margin: 0;
 
     /* color */
-    box-shadow: .25em -.25em var(--little-white);
+    box-shadow: 0.25em -0.25em var(--little-white);
     background: var(--dark-green);
 
     /* sizes */
@@ -149,17 +148,16 @@ button {
 
     /* color */
     background-color: var(--yellow);
-    box-shadow: .25em .25em var(--orange);
+    box-shadow: 0.25em 0.25em var(--orange);
 }
-
 
 button:active {
     /* position */
-    transform: translateY(.25em);
-    transform: translateX(.25em);
+    transform: translateY(0.25em);
+    transform: translateX(0.25em);
 
     /* color */
-    box-shadow: .125em .125em var(--orange);
+    box-shadow: 0.125em 0.125em var(--orange);
 }
 
 button a {
@@ -175,10 +173,10 @@ button a {
     text-decoration: none;
 }
 
-/* error */
+/* ERROR */
 span {
     /* position */
-    padding: .4em;
+    padding: 0.4em;
     padding-left: 1em;
 
     /* color */
@@ -189,11 +187,13 @@ span {
     height: 3em;
 
     /* border */
-    border: .1em solid var(--err-border);
-    border-radius: .5em;
+    border: 0.1em solid var(--err-border);
+    border-radius: 0.5em;
 }
+
 /* h1, h2 .., p */
-.welcome, h1 {
+.welcome,
+h1 {
     /* position */
     padding: 0;
     margin: 0;
@@ -220,10 +220,10 @@ p {
     /* text */
     font-family: 'Annie Use Your Telescope', cursive;
     font-family: 'Montserrat', sans-serif;
-    text-align: center;  
+    text-align: center;
 }
 
-/* forms */
+/* FORMS */
 form {
     /* position */
     width: 80%;
@@ -242,13 +242,13 @@ label {
     color: var(--white);
 
     /* text */
-    font-size: .9em;
+    font-size: 0.9em;
 }
 
 input {
     /* position */
-    padding: .5em .5em;
-    margin: .1em 0 .15em;
+    padding: 0.5em 0.5em;
+    margin: 0.1em 0 0.15em;
 
     /* color */
     color: var(--black);
@@ -260,8 +260,8 @@ input {
     box-sizing: border-box;
 
     /* border */
-    border: .05em solid var(--black);
-    border-radius: .6em;
+    border: 0.05em solid var(--black);
+    border-radius: 0.6em;
 
     /* text */
     font-size: 1em;
@@ -278,7 +278,7 @@ input {
 
     /* color */
     background-color: var(--yellow);
-    box-shadow: .25em .25em var(--orange);
+    box-shadow: 0.25em 0.25em var(--orange);
     color: var(--white);
 
     /* border */
@@ -294,11 +294,11 @@ input {
 
 .submit:active {
     /* position */
-    transform: translateY(.25em);
-    transform: translateX(.25em);
+    transform: translateY(0.25em);
+    transform: translateX(0.25em);
 
     /* color */
-    box-shadow: .125em .125em var(--orange);
+    box-shadow: 0.125em 0.125em var(--orange);
 }
 
 /* list items */
@@ -308,7 +308,7 @@ ul {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 1em;
-    row-gap: .5em;
+    row-gap: 0.5em;
     justify-content: space-between;
 
     /* position */
@@ -333,15 +333,15 @@ ul {
     position: absolute;
     right: -2em;
     top: -2em;
-    padding: .5em;
+    padding: 0.5em;
 
     /* color */
     background-color: var(--black);
     color: var(--little-white);
-    box-shadow: .125em .125em var(--err-border);
+    box-shadow: 0.125em 0.125em var(--err-border);
 
     /* border */
-    border-radius: .5em;
+    border-radius: 0.5em;
 
     /* text */
     text-decoration: none;
@@ -355,7 +355,7 @@ ul {
 
     /* color */
     color: var(--white);
-    box-shadow: .05em .05em var(--err-border);
+    box-shadow: 0.05em 0.05em var(--err-border);
 }
 
 .logout a:active {
@@ -367,26 +367,6 @@ ul {
     /* color */
     color: var(--green);
 }
-
-/* VERWIJDEREN? */
-/* remember me */
-/* .check {
-    color: var(--white);
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: nowrap;
-
-    margin: 0 0 1em 0;
-}
-
-input[type="checkbox"] {
-    width: auto;
-    margin: 0;
-    margin-right: 10px;
-} */
-
 
 /* 404 PAGE */
 .errorstatus {
@@ -400,10 +380,10 @@ input[type="checkbox"] {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='58' viewBox='0 0 42 58'%3E%3Cg fill='%233d574b' fill-opacity='0.69'%3E%3Cpath fill-rule='evenodd' d='M12 18h12v18h6v4H18V22h-6v-4zm-6-2v-4H0V0h36v6h6v36h-6v4h6v12H6v-6H0V16h6zM34 2H2v8h24v24h8V2zM6 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM2 50h32v-8H10V18H2v32zm28-6a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4z'/%3E%3C/g%3E%3C/svg%3E");
 }
 
-.err h1, 
+.err h1,
 .err h2,
 .err p,
-.err h2 a{
+.err h2 a {
     /* position */
     padding: 0;
     margin: 0;
@@ -458,6 +438,7 @@ input[type="checkbox"] {
     width: 80vw;
 }
 
+/* RESPOSIVENESS */
 @media (min-width: 37em) {
     main {
         /* color */
@@ -473,7 +454,6 @@ input[type="checkbox"] {
         width: 90%;
         height: 90%;
     }
-
 }
 
 @media (min-width: 70em) {
