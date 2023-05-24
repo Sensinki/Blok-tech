@@ -56,19 +56,12 @@ As last final step, you should set your .env file for MongoDB connection. In the
 `SESSION_SECRET=<your secret password>`
 
 
-# Tools :wrench:
-
-* [Git](https://git-scm.com/)
-* [Npm](https://www.npmjs.com/)
-* [Node.js](https://nodejs.org/en)
-* [Handlebars](https://handlebarsjs.com/)
-* [Mongoose](https://mongoosejs.com/)
 
 # License :page_facing_up:
 This project is using [MIT Licence](https://github.com/Sensinki/Blok-tech/blob/main/Project%20Tech/LICENCE)
 
 # Sources :globe_with_meridians:
-You can get more help from the following sources.
+You can get more help from the following tools.
 * [Git](https://git-scm.com/)
 * [Npm](https://www.npmjs.com/)
 * [Node.js](https://nodejs.org/en)
