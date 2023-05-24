@@ -6,6 +6,9 @@
     /* backup font*/
     font-family: 'Annie Use Your Telescope', cursive;
     font-family: 'Montserrat', sans-serif;
+
+    padding: 0;
+    margin: 0;
 }
 
 /* cursor */
