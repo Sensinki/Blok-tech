@@ -23,6 +23,22 @@ The concept of nonGLITCH is that gamers can match with each other and find enjoy
 
 # Installation :package:
 - How do I get started?
+### 1. Create a folder
+That helps you to place this project in your computer so you can easily navigate through it. 
+### 2. Clone this repository 
+You can clone the application from CLI or install it by downloading the ZIP file. To clone, you can paste the following code into the CLI you are using:
+
+`gh repo clone Sensinki/Blok-tech`
+
+### 3. Install dependencies
+Now you have all documents but you can not run the code without dependencies. I used npm, you can install npm by copying the following code to the CLI.
+
+`npm install`
+
+### 4. Run the project
+Now you can run the project. Write your terminal `npm start`. 
+
+To check the connection you can go to your browser and write "localhost:3000". If nothing is wrong, you can see an welcome screen of nonGLITCH.
 
 # Tools :wrench:
 
