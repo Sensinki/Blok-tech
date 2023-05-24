@@ -8,11 +8,10 @@ First of all, this project provides a login, sign up and delete account feature 
 
 
 # Table of Contents :mag:
-Description 
-Installation
-Tools
-License
-Sources
+[Description](https://github.com/Sensinki/Blok-tech/blob/main/README.md#description-memo)
+[Installation](https://github.com/Sensinki/Blok-tech#installation-package)
+[License](https://github.com/Sensinki/Blok-tech#license-page_facing_up)
+[Sources](https://github.com/Sensinki/Blok-tech#sources-globe_with_meridians)
 
 
 # Description :memo:
