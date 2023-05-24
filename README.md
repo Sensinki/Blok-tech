@@ -33,23 +33,44 @@ You can clone the application from CLI or install it by downloading the ZIP file
 ### 3. Install dependencies
 Now you have all documents but you can not run the code without dependencies. I used npm, you can install npm by copying the following code to the CLI.
 
+You can check my "package.json" file if you want to see all of my dependensies and devDependensies.
+
 `npm install`
 
 ### 4. Run the project
 Now you can run the project. Write your terminal `npm start`. 
 
-To check the connection you can go to your browser and write "localhost:3000". If nothing is wrong, you can see an welcome screen of nonGLITCH.
+To check the connection you can go to your browser and write "localhost:3000". If there is no problem, you should see the nonGLITCH welcome screen.
+
+### 5. .env file 
+As last final step, you should set your .env file for MongoDB connection. In the .env file you will define following informations:
+
+`DB_URI= <your MongoDB URI>`
+
+`DB_USERNAME= <your username>`
+
+`DB_PASSWORD= <your database password>`
+
+`DB_NAME= <your database name>`
+
+`SESSION_SECRET=<your secret password>`
+
 
 # Tools :wrench:
 
-* Git
-* Npm
-* Node.js
-* 
+* [Git](https://git-scm.com/)
+* [Npm](https://www.npmjs.com/)
+* [Node.js](https://nodejs.org/en)
+* [Handlebars](https://handlebarsjs.com/)
+* [Mongoose](https://mongoosejs.com/)
 
 # License :page_facing_up:
 This project is using [MIT Licence](https://github.com/Sensinki/Blok-tech/blob/main/Project%20Tech/LICENCE)
 
 # Sources :globe_with_meridians:
-- Where can I get more help, if I need it?
-
+You can get more help from the following sources.
+* [Git](https://git-scm.com/)
+* [Npm](https://www.npmjs.com/)
+* [Node.js](https://nodejs.org/en)
+* [Handlebars](https://handlebarsjs.com/)
+* [Mongoose](https://mongoosejs.com/)
