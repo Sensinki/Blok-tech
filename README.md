@@ -24,7 +24,6 @@ The concept of nonGLITCH is that gamers can match with each other and find enjoy
 
 
 # Installation :package:
-- How do I get started?
 ### 1. Create a folder
 That helps you to place this project in your computer so you can easily navigate through it. 
 ### 2. Clone this repository 
