@@ -38,11 +38,12 @@ initializePassport(
     (id) => users.find((user) => user.id === id)
 )
 
-// APP.USE
+// Configure Middleware
 app.use(express.urlencoded({ extended: false }))
 // error messages
 app.use(flash())
-// ?
+
+//
 app.use(
     session({
         secret: process.env.SESSION_SECRET,
@@ -84,59 +85,79 @@ database()
 // app.get()
 
 // CREATE USER ??
-// later kijken
+// later kijken voor database
 // async function run () {
 //     try {
 //         const user = await User.create({
-//             name: 'etss',
-//             username: 'hi',
-//             email: 's@s',
-//             password: 'teyrg'
+//             name: 'jan',
+//             username: 'jan',
+//             email: 'jan@nu.nl',
+//             password: 'jan'
 //         })
 //         console.log(user)
 //     } catch (e) {
-//     console.log(e.message)
+//         console.log(e.message)
 //     }
 // }
 // run()
 
-// APP.POST
+// APP.POST functionalty
 // configuring the login post functionalty
-
 // I got help from Ivo via Tech Support
 app.post(
     '/login-check',
-    checkNotAuthenticated,
-    passport.authenticate('local', {
-        failureRedirect: '/login',
-        failureFlash: true
-    }),
-    function (req, res) {
-        res.redirect('/profile')
+    // checkNotAuthenticated,
+    // passport.authenticate('local', {
+    //     // failureRedirect: '/login',
+    //     failureFlash: true
+    // }),
+
+    async function (req, res) {
+        const submittedEmail = req.body.email
+        // const submittedPassword = req.body.password
+
+        const user = await User.find({ email: submittedEmail })
+        const getFirstUser = user[0]
+        console.log('@@-- the user', user)
+        res.render('profile', { user: getFirstUser })
     }
 )
+
+app.post('')
 
 // configuring the sign-up post functionalty
 app.post('/sign-up', checkNotAuthenticated, async (req, res) => {
     try {
+        // console.log('@@-- the signup data', req.body)
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
-        users.push({
-            id: Date.now().toString(),
+
+        const user = new User({
             name: req.body.name,
             username: req.body.username,
             email: req.body.email,
-            password: hashedPassword
+            password: hashedPassword,
+            sign: req.body.sign
         })
+
+        await user.save()
+
+        // users.push({
+        //     id: Date.now().toString(),
+        //     name: req.body.name,
+        //     username: req.body.username,
+        //     email: req.body.email,
+        //     password: hashedPassword
+        // })
         res.redirect('/login')
     } catch (e) {
-        console.log(e)
+        console.log('signup failed')
         res.redirect('/sign-up')
     }
     console.log(users)
 })
 
 app.post('/profile', (req, res) => {
-    res.render('profile', { title: 'Profile', name: req.user.name })
+    res.render('profile', { name: req.user.name })
 })
 
 // ROUTES
