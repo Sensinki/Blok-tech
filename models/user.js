@@ -21,4 +21,3 @@ const userSchema = new mongoose.Schema({
 })
 
 module.exports = mongoose.model('user', userSchema)
-// i have no idea how to store this info to the database

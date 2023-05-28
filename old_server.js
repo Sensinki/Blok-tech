@@ -13,7 +13,7 @@ const bcrypt = require('bcrypt')
 const mongoose = require('mongoose')
 // authentication
 const passport = require('passport')
-const initializePassport = require('./controllers/passport')
+const initializePassport = require('./passport')
 const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
@@ -82,6 +82,8 @@ const database = (module.exports = () => {
 })
 database()
 
+// app.get()
+
 // CREATE USER ??
 // later kijken voor database
 // async function run () {
@@ -102,74 +104,26 @@ database()
 // APP.POST functionalty
 // configuring the login post functionalty
 // I got help from Ivo via Tech Support
-
-//  what janno did
-//  app.post(
-//      '/login',
-//      // checkNotAuthenticated,
-//      // passport.authenticate('local', {
-//      //     failureRedirect: '/login',
-//      //     failureFlash: true
-//      // }),
-
-//      async function (req, res) {
-//          const submittedEmail = req.body.email
-//          // const submittedPassword = req.body.password
-
-//          const user = await User.find({ email: submittedEmail })
-//          const getFirstUser = user[0]
-
-// not this part
-//          // if (getFirstUser == null) {
-//          //     return res.status(404).json({ message: 'User not found' })
-//          // }
-
-//         console.log(getFirstUser)
-//         console.log('@@-- the user', user)
-//         res.render('profile', { user: getFirstUser })
-//     }
-// )
-
-// what my friend did
-// Handling user login
 app.post(
-    '/login',
-    checkNotAuthenticated,
+    '/login-check',
+    // checkNotAuthenticated,
     // passport.authenticate('local', {
-    //     // successRedirect: '/profile',
-    //     failureRedirect: '/login',
+    //     // failureRedirect: '/login',
     //     failureFlash: true
     // }),
-    async function (req, res) {
-        try {
-            const submittedEmail = req.body.email
 
-            // check if the user exists
-            const user = await User.find({ email: submittedEmail })
-            console.log(user)
-            if (user.length > 0) {
-                res.render('profile')
-            } else {
-                res.status(404).json({ error: "User doesn't exist" })
-            }
-        } catch (error) {
-            res.status(500).json({ error })
-        }
+    async function (req, res) {
+        const submittedEmail = req.body.email
+        // const submittedPassword = req.body.password
+
+        const user = await User.find({ email: submittedEmail })
+        const getFirstUser = user[0]
+        console.log('@@-- the user', user)
+        res.render('profile', { user: getFirstUser })
     }
 )
 
-// what i did
-// app.post(
-//     '/login',
-//     checkNotAuthenticated,
-//     passport.authenticate('local', {
-//         failureRedirect: '/login',
-//         failureFlash: true
-//     }),
-//     function (req, res) {
-//         res.redirect('/profile')
-//     }
-// )
+app.post('')
 
 // configuring the sign-up post functionalty
 app.post('/sign-up', checkNotAuthenticated, async (req, res) => {
@@ -181,12 +135,19 @@ app.post('/sign-up', checkNotAuthenticated, async (req, res) => {
             name: req.body.name,
             username: req.body.username,
             email: req.body.email,
-            password: hashedPassword
-            // sign: req.body.sign
+            password: hashedPassword,
+            sign: req.body.sign
         })
 
         await user.save()
 
+        // users.push({
+        //     id: Date.now().toString(),
+        //     name: req.body.name,
+        //     username: req.body.username,
+        //     email: req.body.email,
+        //     password: hashedPassword
+        // })
         res.redirect('/login')
     } catch (e) {
         console.log('signup failed')
@@ -196,7 +157,7 @@ app.post('/sign-up', checkNotAuthenticated, async (req, res) => {
 })
 
 app.post('/profile', (req, res) => {
-    res.render('profile', { title: 'Profile', name: req.user.name })
+    res.render('profile', { name: req.user.name })
 })
 
 // ROUTES
@@ -226,7 +187,7 @@ app.get('/test', async (req, res) => {
 app.post('/logout', (req, res) => {
     req.logout(req.user, (err) => {
         if (err) return err
-        res.redirect('/login')
+        res.redirect('/')
     })
 })
 
