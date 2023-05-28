@@ -9,8 +9,11 @@ First of all, this project provides a login, sign up and delete account feature 
 
 # Table of Contents :mag:
 [Description](https://github.com/Sensinki/Blok-tech/blob/main/README.md#description-memo)
+
 [Installation](https://github.com/Sensinki/Blok-tech#installation-package)
+
 [License](https://github.com/Sensinki/Blok-tech#license-page_facing_up)
+
 [Sources](https://github.com/Sensinki/Blok-tech#sources-globe_with_meridians)
 
 
@@ -21,7 +24,6 @@ The concept of nonGLITCH is that gamers can match with each other and find enjoy
 
 
 # Installation :package:
-- How do I get started?
 ### 1. Create a folder
 That helps you to place this project in your computer so you can easily navigate through it. 
 ### 2. Clone this repository 
