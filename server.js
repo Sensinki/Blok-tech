@@ -12,8 +12,6 @@ const bcrypt = require('bcrypt')
 // database
 const mongoose = require('mongoose')
 // authentication
-const passport = require('passport')
-const initializePassport = require('./controllers/passport')
 const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
@@ -31,13 +29,6 @@ app.engine('handlebars', engine({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.set('views', './views')
 
-//
-initializePassport(
-    passport,
-    (email) => users.find((user) => user.email === email),
-    (id) => users.find((user) => user.id === id)
-)
-
 // Configure Middleware
 app.use(express.urlencoded({ extended: false }))
 // error messages
@@ -51,8 +42,7 @@ app.use(
         saveUninitialized: false
     })
 )
-app.use(passport.initialize())
-app.use(passport.session())
+
 app.use(methodOverride('_method'))
 // ?
 app.use(express.json())
@@ -83,96 +73,27 @@ const database = (module.exports = () => {
 database()
 
 // CREATE USER ??
-// later kijken voor database
-// async function run () {
-//     try {
-//         const user = await User.create({
-//             name: 'jan',
-//             username: 'jan',
-//             email: 'jan@nu.nl',
-//             password: 'jan'
-//         })
-//         console.log(user)
-//     } catch (e) {
-//         console.log(e.message)
-//     }
-// }
-// run()
 
-// APP.POST functionalty
-// configuring the login post functionalty
-// I got help from Ivo via Tech Support
-
-//  what janno did
-//  app.post(
-//      '/login',
-//      // checkNotAuthenticated,
-//      // passport.authenticate('local', {
-//      //     failureRedirect: '/login',
-//      //     failureFlash: true
-//      // }),
-
-//      async function (req, res) {
-//          const submittedEmail = req.body.email
-//          // const submittedPassword = req.body.password
-
-//          const user = await User.find({ email: submittedEmail })
-//          const getFirstUser = user[0]
-
-// not this part
-//          // if (getFirstUser == null) {
-//          //     return res.status(404).json({ message: 'User not found' })
-//          // }
-
-//         console.log(getFirstUser)
-//         console.log('@@-- the user', user)
-//         res.render('profile', { user: getFirstUser })
-//     }
-// )
-
-// what my friend did
 // Handling user login
-app.post(
-    '/login',
-    checkNotAuthenticated,
-    // passport.authenticate('local', {
-    //     // successRedirect: '/profile',
-    //     failureRedirect: '/login',
-    //     failureFlash: true
-    // }),
-    async function (req, res) {
-        try {
-            const submittedEmail = req.body.email
+app.post('/login-check', async function (req, res) {
+    try {
+        const submittedEmail = req.body.email
 
-            // check if the user exists
-            const user = await User.find({ email: submittedEmail })
-            console.log(user)
-            if (user.length > 0) {
-                res.render('profile')
-            } else {
-                res.status(404).json({ error: "User doesn't exist" })
-            }
-        } catch (error) {
-            res.status(500).json({ error })
+        // check if the user exists
+        const user = await User.find({ email: submittedEmail })
+        console.log(user)
+        if (user.length > 0) {
+            res.render('profile', { name: req.user.name })
+        } else {
+            res.status(404).json({ error: "User doesn't exist" })
         }
+    } catch (error) {
+        res.status(500).json({ error })
     }
-)
-
-// what i did
-// app.post(
-//     '/login',
-//     checkNotAuthenticated,
-//     passport.authenticate('local', {
-//         failureRedirect: '/login',
-//         failureFlash: true
-//     }),
-//     function (req, res) {
-//         res.redirect('/profile')
-//     }
-// )
+})
 
 // configuring the sign-up post functionalty
-app.post('/sign-up', checkNotAuthenticated, async (req, res) => {
+app.post('/sign-up', async (req, res) => {
     try {
         // console.log('@@-- the signup data', req.body)
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
@@ -200,19 +121,19 @@ app.post('/profile', (req, res) => {
 })
 
 // ROUTES
-app.get('/', checkNotAuthenticated, (req, res) => {
+app.get('/', (req, res) => {
     res.render('home', { title: 'Home' })
 })
 
-app.get('/sign-up', checkNotAuthenticated, (req, res) => {
+app.get('/sign-up', (req, res) => {
     res.render('sign-up', { title: 'Sign in' })
 })
 
-app.get('/login', checkNotAuthenticated, (req, res) => {
+app.get('/login', (req, res) => {
     res.render('login', { title: 'Login' })
 })
 
-app.get('/profile', checkAuthenticated, (req, res) => {
+app.get('/profile', (req, res) => {
     res.render('profile', { title: 'Profile', name: req.user.name })
 })
 
@@ -229,21 +150,6 @@ app.post('/logout', (req, res) => {
         res.redirect('/login')
     })
 })
-
-// AUTHENTICATED OR NOT
-function checkAuthenticated (req, res, next) {
-    if (req.isAuthenticated()) {
-        return next()
-    }
-    res.redirect('/login')
-}
-
-function checkNotAuthenticated (req, res, next) {
-    if (req.isAuthenticated()) {
-        return res.redirect('/profile')
-    }
-    next()
-}
 
 // LAATSTE ROUTE ERROR(404) PAGINA
 app.get('/*', (req, res) => {
