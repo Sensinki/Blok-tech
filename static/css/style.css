@@ -176,6 +176,10 @@ button a {
     text-decoration: none;
 }
 
+.delete {
+    background-color: var(--err-border);
+}
+
 /* ERROR */
 span {
     /* position */
@@ -304,6 +308,11 @@ input {
     box-shadow: 0.125em 0.125em var(--orange);
 }
 
+.flex {
+    display: flex;
+    flex-direction: row;
+}
+
 /* list items */
 ul {
     /* display */
@@ -322,19 +331,20 @@ ul {
     list-style: none;
 }
 
-.logout {
+.logout,
+.delete {
     /* position */
     position: relative;
 
     /* sizes */
-    width: 80%;
+    width: max-content;
     height: max-content;
 }
 
 .logout button {
     /* position */
     position: absolute;
-    right: -2em;
+    right: -8em;
     top: -2em;
     padding: 0.5em;
 
@@ -353,7 +363,7 @@ ul {
 .logout button:hover {
     /* position */
     position: absolute;
-    right: -2.25em;
+    right: -8.25em;
     top: -1.75em;
 
     /* color */
@@ -364,7 +374,47 @@ ul {
 .logout a:active {
     /* position */
     position: absolute;
-    right: -2.5em;
+    right: -8.5em;
+    top: -1.5em;
+
+    /* color */
+    color: var(--green);
+}
+
+.delete button {
+    /* position */
+    position: absolute;
+    right: 1em;
+    top: -2em;
+    padding: 0.5em;
+
+    /* color */
+    background-color: var(--err-border);
+    color: var(--white);
+    box-shadow: 0.125em 0.125em var(--err-border);
+
+    /* border */
+    border-radius: 0.5em;
+
+    /* text */
+    text-decoration: none;
+}
+
+.delete button:hover {
+    /* position */
+    position: absolute;
+    right: 0.75em;
+    top: -1.75em;
+
+    /* color */
+    color: var(--white);
+    box-shadow: 0.05em 0.05em var(--err-background);
+}
+
+.delete a:active {
+    /* position */
+    position: absolute;
+    right: 0.5em;
     top: -1.5em;
 
     /* color */

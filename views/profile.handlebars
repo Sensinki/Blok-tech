@@ -2,10 +2,15 @@
 
 {{> header-hp }}
 
+<div class="flex">
 <form class="logout" action="/logout" method="POST">
-<button type="submit" >log out</button>
+<button type="submit" class="logout">log out</button>
 </form>
 
+<form class="delete" action="/delete" method="POST">
+<button type="submit" class="delete">delete account</button>
+</form>
+</div>
 {{!-- dynamic part --}}
 <ul>
 <li>

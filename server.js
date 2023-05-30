@@ -12,17 +12,14 @@ const bcrypt = require('bcrypt')
 // database
 const mongoose = require('mongoose')
 // authentication
-// const flash = require('express-flash')
 const session = require('express-session')
-// const methodOverride = require('method-override')
 // user schema
 const User = require('./models/user')
+const users = []
+const bodyParser = require('body-parser')
 
 // PORT
 const PORT = process.env.PORT || 3000
-
-//
-const users = []
 
 // BASIC SETTINGS
 
@@ -34,9 +31,11 @@ app.set('views', './views')
 
 // Configure Middleware
 app.use(express.urlencoded({ extended: false }))
-// error messages
-// app.use(flash())
 app.use(express.json())
+
+// Configure body-parser middleware
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 //
 app.use(
@@ -47,9 +46,6 @@ app.use(
         saveUninitialized: true
     })
 )
-
-// app.use(methodOverride('_method'))
-// ?
 
 // .ENV FILE
 const dotenv = require('dotenv')
@@ -74,32 +70,12 @@ const database = (module.exports = () => {
 database()
 
 // ROUTES
-app.get('/', (req, res) => {
-    res.render('home', { title: 'Home' })
-})
-
-app.get('/sign-up', (req, res) => {
-    res.render('sign-up', { title: 'Sign in' })
-})
-
-app.get('/login', (req, res) => {
-    res.render('login', { title: 'Login' })
-})
-
-app.get('/profile', (req, res) => {
-    res.render('profile', { title: 'Profile' })
-})
-
-// test
-app.get('/test', async (req, res) => {
-    const doc = await User.findOne()
-    console.log(doc)
-})
 
 // Handling user login
 // Hulp gekregen van Janno en Ivo and a friend
 app.post('/login-check', async (req, res) => {
     const submittedEmail = req.body.email
+
     const submittedPassword = req.body.password
     const user = await User.findOne({ email: submittedEmail })
 
@@ -127,7 +103,6 @@ app.post('/login-check', async (req, res) => {
 // making an account
 app.post('/sign-up', async (req, res) => {
     try {
-        // console.log('@@-- the signup data', req.body)
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
 
         const user = new User({
@@ -135,7 +110,6 @@ app.post('/sign-up', async (req, res) => {
             username: req.body.username,
             email: req.body.email,
             password: hashedPassword
-            // sign: req.body.sign
         })
 
         await user.save()
@@ -151,6 +125,25 @@ app.post('/sign-up', async (req, res) => {
 app.post('/profile', (req, res) => {
     res.render('profile', { title: 'Profile', name: req.user.name })
 })
+app.get('/', (req, res) => {
+    res.render('home', { title: 'Home' })
+})
+
+app.get('/sign-up', (req, res) => {
+    res.render('sign-up', { title: 'Sign in' })
+})
+
+app.get('/login', (req, res) => {
+    res.render('login', { title: 'Login' })
+})
+
+app.get('/profile', (req, res) => {
+    res.render('profile', { title: 'Profile' })
+})
+
+app.get('/deletedaccount', (req, res) => {
+    res.render('deletedaccount', { title: 'Deleted Account' })
+})
 
 // LOGOUT
 app.post('/logout', (req, res) => {
@@ -163,9 +156,41 @@ app.post('/logout', (req, res) => {
     })
 })
 
+// DELETE ACCOUNT
+app.post('/delete', async (req, res) => {
+    try {
+        const submittedEmail = req.body.email
+        // checking why submittedEmail not working
+        console.log('req.body:', req.body)
+
+        console.log('submittedEmail:', submittedEmail)
+        // Find and delete the user using the User model
+        const result = await User.deleteOne({ email: submittedEmail })
+
+        console.log('result:', result)
+
+        if (result.deletedCount === 0) {
+            res.status(404).send('Gebruiker niet gevonden')
+            return
+        }
+
+        res.redirect('/deletedaccount')
+    } catch (error) {
+        console.error(error)
+        res.status(500).send('Er is een fout opgetreden bij het verwijderen van de gebruiker')
+    }
+})
+
 // LAATSTE ROUTE ERROR(404) PAGINA
 app.get('/*', (req, res) => {
     res.status(404).render('404', { title: '404' })
+})
+
+app.use(function (req, res) {
+    res.locals.title = 'Error 404'
+    res.status(404).render('404', {
+        path: 'Error'
+    })
 })
 
 // PORT
