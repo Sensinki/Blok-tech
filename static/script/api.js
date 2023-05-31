@@ -5,18 +5,17 @@ fetch('https://gamerpower.p.rapidapi.com/api/filter?platform=epic-games-store.st
         'X-RapidAPI-Host': 'gamerpower.p.rapidapi.com'
     }
 })
-    .then((response) => {
-        return response.json()
-    })
+    .then((response) => response.json())
+    // got some help from ChatGPT in this part
     .then((data) => {
-        data.forEach((user) => {
-            // const markup = user.name
-            // document.querySelector('section ul li img').insertAdjacentHTML('beforeend', markup)
-        })
-        console.log(data)
-        // const fortnite = document.querySelector('section ul li img')
+        const gameImages = data.map((game) => game.thumbnail)
+        const gameList = document.getElementById('game-list')
 
-        // console.log(response.offerImageTall)
+        gameImages.forEach((image) => {
+            const imgElement = document.createElement('img')
+            imgElement.src = image
+            gameList.appendChild(imgElement)
+        })
     })
     .catch((err) => {
         console.log(err)

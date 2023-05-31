@@ -23,21 +23,9 @@
     </h1>
 </li>
 </ul>
-<section>
-    <h2>Add the games you play</h2>
+<section class="scroll">
     {{!-- corroussel met images --}}
-    <ul>
-        <li><img id='test' src="#" alt="Pubg"></li>
-        <li><img src="#" alt="Apex"></li>
-        <li><img src="#" alt="Minecraft"></li>
-        <li><img src="#" alt="LOL"></li>
-        <li><img src="#" alt="Roblox"></li>
-        <li><img src="#" alt="CSGO"></li>
-        <li><img src="#" alt="Fortnite"></li>
-        <li><img src="#" alt="Grand Theft Auto V"></li>
-        <li><img src="#" alt="Rocket League"></li>
-        <li><img src="#" alt="Valorant"></li>
-    </ul>
+    <ul id="game-list"></ul>
 </section>
 
 <section>
@@ -47,4 +35,12 @@
         <a href="/404">FIND GAMER</a>
     </button>
 </section>
+
+    {{!-- got some help from ChatGPT in this part --}}
+    <script id="game-template" type="text/x-handlebars-template">
+        {{#each gameImages}}
+            <li><img src="{{this}}"></li>
+        {{/each}}
+    </script>
+
 </main>

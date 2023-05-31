@@ -13,10 +13,11 @@ const bcrypt = require('bcrypt')
 const mongoose = require('mongoose')
 // authentication
 const session = require('express-session')
+// axios API
+const axios = require('axios')
 // user schema
 const User = require('./models/user')
 const users = []
-const bodyParser = require('body-parser')
 
 // PORT
 const PORT = process.env.PORT || 3000
@@ -32,10 +33,6 @@ app.set('views', './views')
 // Configure Middleware
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
-
-// Configure body-parser middleware
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
 
 //
 app.use(
@@ -69,13 +66,61 @@ const database = (module.exports = () => {
 })
 database()
 
+// API
+// app.get('/api/games', async (req, res) => {
+//     try {
+//         const res = await axios('https://gamerpower.p.rapidapi.com/api/filter?platform=epic-games-store.steam.android&type=game.loot&sort-by=popularity')
+//         const data = await res.json()
+
+//         console.log(data)
+//         // got help from ChatGPT to save the data into the database
+//         const Games = require('./models/game.js')
+//         data.forEach(async (item) => {
+//             const game = new Games({
+//                 id: item.id,
+//                 title: item.title,
+//                 image: item.featured || item.thumbnail || item.cover
+//             })
+//             await game.save()
+//         })
+//         res.json(data)
+//     } catch (error) {
+//         console.error('Error:', error)
+//         res.status(500).json({ error: 'An error occurred' })
+//     }
+// })
+
+app.get('/api/games', async (req, res) => {
+    try {
+        const response = await axios.get('https://www.gamerpower.com/api/giveaways')
+        const data = response.data
+
+        console.log(data)
+
+        const Games = require('./models/game.js')
+        data.forEach(async (item) => {
+            const game = new Games({
+                id: item.id,
+                title: item.title,
+                image: item.featured || item.thumbnail || item.cover
+            })
+            await game.save()
+        })
+
+        res.json(data)
+    } catch (error) {
+        console.error('Error:', error)
+        res.status(500).json({ error: 'An error occurred' })
+    }
+})
+
 // ROUTES
 
 // Handling user login
 // Hulp gekregen van Janno en Ivo and a friend
+
 app.post('/login-check', async (req, res) => {
     const submittedEmail = req.body.email
-
     const submittedPassword = req.body.password
     const user = await User.findOne({ email: submittedEmail })
 
@@ -87,7 +132,8 @@ app.post('/login-check', async (req, res) => {
             }
 
             if (result) {
-                // If the password matched
+                // If the password matched, store the email in the session
+                req.session.email = submittedEmail
                 res.render('profile', { user })
             } else {
                 // Passwords didn't match
@@ -113,6 +159,9 @@ app.post('/sign-up', async (req, res) => {
         })
 
         await user.save()
+
+        // Store the email in the session
+        req.session.email = req.body.email
 
         res.redirect('/login')
     } catch (e) {
@@ -158,26 +207,16 @@ app.post('/logout', (req, res) => {
 
 // DELETE ACCOUNT
 app.post('/delete', async (req, res) => {
+    const userEmail = req.session.email
+
     try {
-        const submittedEmail = req.body.email
-        // checking why submittedEmail not working
-        console.log('req.body:', req.body)
-
-        console.log('submittedEmail:', submittedEmail)
-        // Find and delete the user using the User model
-        const result = await User.deleteOne({ email: submittedEmail })
-
-        console.log('result:', result)
-
-        if (result.deletedCount === 0) {
-            res.status(404).send('Gebruiker niet gevonden')
-            return
-        }
-
+        await User.findOneAndDelete({ email: userEmail })
+        req.session.destroy()
         res.redirect('/deletedaccount')
+        console.log('Account deleted successfully')
     } catch (error) {
-        console.error(error)
-        res.status(500).send('Er is een fout opgetreden bij het verwijderen van de gebruiker')
+        console.log(error)
+        res.redirect('/profile')
     }
 })
 
