@@ -68,4 +68,3 @@ You can get more help from the following tools.
 * [Node.js](https://nodejs.org/en)
 * [Handlebars](https://handlebarsjs.com/)
 * [Mongoose](https://mongoosejs.com/)
-# tech-copy
