@@ -104,7 +104,7 @@ app.post('/login-check', async (req, res) => {
     const user = await User.findOne({ email: submittedEmail })
 
     if (user) {
-        bcrypt.compare(submittedPassword, user.password, function (err, result) {
+        bcrypt.compare(submittedPassword, user.password, (err, result) => {
             if (err) {
                 console.error(err)
                 return res.status(500).send('Error occurred while comparing passwords.')
