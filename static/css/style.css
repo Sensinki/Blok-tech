@@ -439,6 +439,13 @@ ul {
     margin: 1em;
 }
 
+/* JAVASCRIPT DISABLED */
+.hidden {
+    /* sizes */
+    margin: 0;
+    padding: 0;
+}
+
 /* 404 PAGE */
 .errorstatus {
     /* sizes */

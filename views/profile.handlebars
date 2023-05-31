@@ -23,10 +23,20 @@
     </h1>
 </li>
 </ul>
+
+{{!-- got help from ChatCPT about fallback for JavaScript --}}
+<section class="hidden">
+    {{!-- The fallback error message if JavaScript is disabled --}}
+    <noscript>
+        <p>Your browser has JavaScript disabled. Please enable JavaScript to view the content.</p>
+    </noscript>
+</section>
+
 <section class="scroll">
     {{!-- corroussel met images --}}
     <ul id="game-list"></ul>
 </section>
+
 
 <section>
     <h2>Find a gamer to play with</h2>
@@ -37,7 +47,7 @@
 </section>
 
     {{!-- got some help from ChatGPT in this part --}}
-    <script id="game-template" type="text/x-handlebars-template">
+    <script type="text/x-handlebars-template">
         {{#each gameImages}}
             <li><img src="{{this}}"></li>
         {{/each}}

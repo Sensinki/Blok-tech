@@ -109,8 +109,11 @@ app.get('/api/games', async (req, res) => {
 
         res.json(data)
     } catch (error) {
+        const errorMessage = 'An error occurred while fetching data from the API.'
+        res.render('profile', { errorMessage })
+
         console.error('Error:', error)
-        res.status(500).json({ error: 'An error occurred' })
+        // res.status(500).json({ error: 'An error occurred' })
     }
 })
 
