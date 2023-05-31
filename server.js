@@ -67,29 +67,6 @@ const database = (module.exports = () => {
 database()
 
 // API
-// app.get('/api/games', async (req, res) => {
-//     try {
-//         const res = await axios('https://gamerpower.p.rapidapi.com/api/filter?platform=epic-games-store.steam.android&type=game.loot&sort-by=popularity')
-//         const data = await res.json()
-
-//         console.log(data)
-//         // got help from ChatGPT to save the data into the database
-//         const Games = require('./models/game.js')
-//         data.forEach(async (item) => {
-//             const game = new Games({
-//                 id: item.id,
-//                 title: item.title,
-//                 image: item.featured || item.thumbnail || item.cover
-//             })
-//             await game.save()
-//         })
-//         res.json(data)
-//     } catch (error) {
-//         console.error('Error:', error)
-//         res.status(500).json({ error: 'An error occurred' })
-//     }
-// })
-
 app.get('/api/games', async (req, res) => {
     try {
         const response = await axios.get('https://www.gamerpower.com/api/giveaways')
@@ -121,7 +98,6 @@ app.get('/api/games', async (req, res) => {
 
 // Handling user login
 // Hulp gekregen van Janno en Ivo and a friend
-
 app.post('/login-check', async (req, res) => {
     const submittedEmail = req.body.email
     const submittedPassword = req.body.password
@@ -139,13 +115,11 @@ app.post('/login-check', async (req, res) => {
                 req.session.email = submittedEmail
                 res.render('profile', { user })
             } else {
-                // Passwords didn't match
                 res.render('login', { messages: { error: 'Password is incorrect.' } })
             }
         })
     } else {
         res.render('login', { messages: { error: 'No user with this email address' } })
-        // No user with this email address
     }
 })
 
