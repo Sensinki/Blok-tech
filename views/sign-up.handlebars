@@ -7,36 +7,33 @@
 <span>{{messages.error}}</span>
 {{/if}}
 
+<noscript>
+        <details>
+                <summary></summary>
+                <p>Password must contain at least 1 uppercase letter, 1 number, and be minimum 5 characters long</p>
+        </details> 
+</noscript>
+
 <form class="sign-up" method="post" action="/sign-up">
-        <div>
+
         <label for="name">Full Name</label>
         <input type="text" class="name" name="name" placeholder="Kim Larrington" minlength="4" maxlength="50" required>
-        </div>
-        <br>
 
-        <div>
         <label for="username">Glitch Username</label>
         <input type="text" class="username" name="username" placeholder="Kim3482" minlength="5" maxlength="50" required>
-        </div>
-        <br>
         
-        <div>
         <label for="email">Email</label>
         <input type="email" class="email" name="email" placeholder="mymail@gmail.com" minlength="7" maxlength="50" required>
-        </div>
-        <br>
 
-        <div>
         <label for="password">Password</label>
-        <input type="password" class="password" name="password" placeholder="*****" minlength="5" maxlength="50" required>
-        </div>
-        <br>
-
-        <input class="submit"
-        type="submit" name="sign" value="SIGN UP">
+        <input type="password" class="password" name="password" id="password" placeholder="*****" minlength="5" maxlength="50" required>
+        
+        <input class="submit" type="submit" name="sign" value="SIGN UP">
 
 </form>
 
- <a href="/login">I already have an account</a>
+<a href="/login">I already have an account</a>
 
 </main>
+
+

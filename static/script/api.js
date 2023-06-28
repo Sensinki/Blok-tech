@@ -2,8 +2,8 @@ fetch('https://gamerpower.p.rapidapi.com/api/filter?platform=epic-games-store.st
     method: 'GET',
     headers: {
         'X-RapidAPI-Key': 'f09b37802cmsh0182708bf84dc2cp1404e4jsn18a18d2f1e8b',
-        'X-RapidAPI-Host': 'gamerpower.p.rapidapi.com'
-    }
+        'X-RapidAPI-Host': 'gamerpower.p.rapidapi.com',
+    },
 })
     .then((response) => response.json())
     // got some help from ChatGPT in this part

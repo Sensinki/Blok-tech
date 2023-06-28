@@ -8,21 +8,23 @@
 <span>{{messages.error}}</span>
 {{/if}}
 
+<noscript>
+        <details>
+                <summary></summary>
+                <p>Password must contain at least 1 uppercase letter, 1 number, and be minimum 5 characters long</p>
+        </details> 
+</noscript>
+
 <form class="login" method="post" action="/login-check">
-    <div>
     <label for="email">Email</label>
     <input type="text" name="email" placeholder="kim34@gmail.com" minlength="7" maxlength="50" required>
-    </div>
-    <br>
 
-    <div>
     <label for="password">Password</label>
     <input type="password" name="password" placeholder="*****" minlength="5" maxlength="50" required>
-    </div>
-    <br>
 
-    <input class="submit" 
-    type="submit" name="log" value="LOG IN">
+    <div class="g-recaptcha" data-sitekey="6Ld8U9cmAAAAACRKgHrSpdsXaRBNB_KZRJffUbFS"></div>
+
+    <input class="submit" type="submit" name="log" value="LOG IN">
 </form>
 
  <a href="/sign-up">I don't have an account</a>
